@@ -1,5 +1,5 @@
 export enum NgPhoenixStatusResponse {
-    OK = 'ok',
-    ERROR = 'error',
-    TIMEOUT = 'timeout'
-  }
+  OK = 'ok',
+  ERROR = 'error',
+  TIMEOUT = 'timeout',
+}

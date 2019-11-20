@@ -1,9 +1,11 @@
 {
   "name": "ng-phoenix",
-  "version": "0.0.1",
+  "version": "0.2.0-1.4.11",
   "schematics": "./schematics/collection.json",
   "peerDependencies": {
     "@angular/core": "^8.2.14",
-    "phoenix": "^1.4"
+    "ng-packagr": "^5.7.1",
+    "phoenix": "^1.4",
+    "rxjs": "~6.4.0"
   }
 }
