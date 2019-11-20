@@ -1,0 +1,9 @@
+{
+  "name": "ng-phoenix",
+  "version": "0.0.1",
+  "schematics": "./schematics/collection.json",
+  "peerDependencies": {
+    "@angular/core": "^8.2.14",
+    "phoenix": "^1.4"
+  }
+}

@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-phoenix": [
+        "dist/ng-phoenix"
+      ],
+      "ng-phoenix/*": [
+        "dist/ng-phoenix/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
