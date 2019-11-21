@@ -9,6 +9,7 @@ import { INgPhoenixService, NgAfterJoin, NgBeforeJoin } from './ng-phoenix.inter
 import { NgPhoenixStatusResponse } from './ng-phoenix-status-response.enum';
 import { NgPhoenixEvent } from './ng-phoenix-event.interface';
 import { NgPhoenixEventType } from './ng-phoenix-event-type.enum';
+import { NgPhoenixError } from './ng-phoenix.error';
 
 @Injectable({
   providedIn: 'root'
@@ -34,16 +35,19 @@ export class NgPhoenixService implements INgPhoenixService {
 
   public connect() {
     if (this._socket == null || this._socket.isConnected()) {
-      console.warn('Socket is null or already connected - aborting!');
-      return;
+      throw new NgPhoenixError('socket-error', 'Socket is null or already connected', { 
+        isSocketNull: this._socket == null, 
+        isConnected: this._socket != null && this._socket.isConnected() || false
+      });
     }
     this._socket.connect();
   }
 
   public disconnect() {
     if (this._socket === null) {
-      console.warn('No socket to disconnect - aborting!');
-      return;
+      throw new NgPhoenixError('socket-error', 'Socket is null, cannot join channel', { 
+        isSocketNull: true
+      });
     }
     this._socket.disconnect();
   }
@@ -51,29 +55,42 @@ export class NgPhoenixService implements INgPhoenixService {
   public joinChannel(topic: string, params?: object, beforeJoin?: NgBeforeJoin, afterJoin?: NgAfterJoin) {
     if (this._socket == null) {
       console.warn('Socket is null, cannot join channel - aborting!');
-      return;
+      throw new NgPhoenixError('socket-error', 'Socket is null, cannot join channel', { 
+        isSocketNull: true, 
+        topic: topic,
+        params: params
+      });
     }
     if (this._channels.get(topic)) {
-      console.warn('Channel already exists - aborting!');
-      return;
+      throw new NgPhoenixError('channel-error', 'Channel already exists', { 
+        topic: topic,
+        params: params
+      });
     }
     const channel = this._socket.channel(topic, params);
     this._setupChannel(topic, channel);
     if (beforeJoin != null) { beforeJoin(channel) }
     this._channels = this._channels.set(topic, channel);
     channel.join()
-      .receive(NgPhoenixStatusResponse.OK, resp => {
+      .receive(NgPhoenixStatusResponse.OK, _ => { 
         if (afterJoin != null) { afterJoin(channel) }
+        this.subject.next({ type: NgPhoenixEventType.ChannelJoined, topic: topic });
       })
-      .receive(NgPhoenixStatusResponse.ERROR, resp => { console.error(`Failed to join channel ${topic}: ERROR`, resp); })
-      .receive(NgPhoenixStatusResponse.TIMEOUT, resp => { console.error(`Failed to join channel ${topic}: TIMEOUT`, resp); })
+      .receive(NgPhoenixStatusResponse.ERROR, resp => {
+        this.subject.next({ type: NgPhoenixEventType.ChannelError, topic: topic, reason: resp });
+      })
+      .receive(NgPhoenixStatusResponse.TIMEOUT, resp => {
+        this.subject.next({ type: NgPhoenixEventType.ChannelError, topic: topic, reason: resp });
+      })
   }
 
   public leaveChannel(topic: string) {
     if (!!this._channels.get(topic)) {
       this._channels.get(topic).leave();
     } else {
-      console.warn(`Channel with topic ${topic} did not exist`);
+      throw new NgPhoenixError('channel-error', 'Channel did not exist when trying to leave', { 
+        topic: topic
+      });
     }
   }
 
@@ -81,9 +98,9 @@ export class NgPhoenixService implements INgPhoenixService {
    * PRIVATE
    */
   private _setupSocket = (socket: Socket) => {
-    socket.onOpen(() => { this.subject.next(<NgPhoenixEvent> { type: NgPhoenixEventType.SocketUp }); });
-    socket.onError(() => { this.subject.next(<NgPhoenixEvent> { type: NgPhoenixEventType.SocketError }); });
-    socket.onClose(() => { this.subject.next(<NgPhoenixEvent> { type: NgPhoenixEventType.SocketDown }); });
+    socket.onOpen(() => { this.subject.next({ type: NgPhoenixEventType.SocketUp });});
+    socket.onError(() => { this.subject.next({ type: NgPhoenixEventType.SocketError });});
+    socket.onClose(() => { this.subject.next({ type: NgPhoenixEventType.SocketDown });});
   }
   
   private _setupChannel(topic: string, channel: Channel) {
@@ -91,11 +108,11 @@ export class NgPhoenixService implements INgPhoenixService {
 
     channel.onError((reason: string) => {
       console.error(`Error on channel ${topic}: ${reason}`);
-      this.subject.next(<NgPhoenixEvent> { type: NgPhoenixEventType.ChannelError, topic: topic, reason: reason });
+      this.subject.next({ type: NgPhoenixEventType.ChannelError, topic: topic, reason: reason });
     });
     channel.onClose(() => {
       console.log(`${topic} closed`);
-      this.subject.next(<NgPhoenixEvent> { type: NgPhoenixEventType.ChannelLeft, topic: topic });
+      this.subject.next({ type: NgPhoenixEventType.ChannelLeft, topic: topic });
     });
   }
 }
