@@ -13,7 +13,6 @@ export type NgJoinChannelType = (topic: string, params?: object, beforeJoin?: Ng
 export interface INgPhoenixService {
   subject: Subject<NgPhoenixEvent>
   isConnected(): boolean;
-//   constructSocket(endpoint: string, params?: any): void;
   getSocket(): Socket | null;
   setSocket(socket: Socket | null): void;
   connect(options?: Partial<SocketConnectOption>): void;

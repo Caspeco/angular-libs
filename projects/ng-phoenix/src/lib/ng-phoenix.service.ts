@@ -17,7 +17,6 @@ import { NgPhoenixError } from './ng-phoenix.error';
 export class NgPhoenixService implements INgPhoenixService {
   private _socket: Socket = null;
   private _channels: Map<string, Channel> = new Map();
-  private _presences: Map<Channel, Presence> = new Map();
 
   public subject: Subject<NgPhoenixEvent> = new Subject<NgPhoenixEvent>();
 
