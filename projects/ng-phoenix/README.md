@@ -13,7 +13,7 @@ Run `ng build ng-phoenix` to build the project. The build artifacts will be stor
 
 ## Publishing
 
-After building your library with `ng build ng-phoenix`, go to the dist folder `cd dist/ng-phoenix` and run `npm publish`.
+After building your library with `ng build ng-phoenix`, go to the dist folder `cd dist/ng-phoenix` and run `npm publish`. Do NOT do this lightly, as once a package has been published that name and version can never be used again, even if you unpublish it.
 
 ## Running unit tests
 

@@ -66,11 +66,11 @@ describe('NgPhoenixService', () => {
     expect(service.isConnected()).toEqual(false);
   });
 
-  it('cannot connect null', () => {
+  it('cannot connect when socket is null', () => {
     const service: NgPhoenixService = TestBed.get(NgPhoenixService);
     expect(service).toBeTruthy();
     service.setSocket(null);
-    service.connect();
+    expect(() => { service.connect() }).toThrowError('socket is null');
     expect(service.isConnected()).toEqual(false);
   });
 });

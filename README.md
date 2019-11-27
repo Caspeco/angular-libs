@@ -8,7 +8,7 @@ An angular service meant to wrap the JavaScript [phoenix client](https://github.
 
 ## Development server
 
-Run `ng serve <project-name> [-c <config-name>]` for a dev server for a specific application project. Navigate to `http://localhost:4200/`. Omitting `--project <project-name>` will attempt to serve the default project, which might not be an application but a library project, at which point it will fail with the error `An unhandled exception occurred: No projects support the 'serve' target`. The app will automatically reload if you change any of the source files.
+Run `ng serve <project-name> [-c <config-name>]` for a dev server for a specific application project. Navigate to `http://localhost:4200/`. Omitting `<project-name>` will attempt to serve the default project, which might not be an application but a library project, at which point it will fail with the error `An unhandled exception occurred: No projects support the 'serve' target`. The app will automatically reload if you change any of the source files.
 
 To develop a library project on the other hand you would run `ng test --project <project-name>` to only run the current library project's tests. Omitting the project flag will run all tests.
 
@@ -22,7 +22,7 @@ Run `ng build <project-name>` to build the project with name `<project-name>`. O
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `ng test [<project-name>]` to execute the unit tests via [Karma](https://karma-runner.github.io), where if you omit `<project-name>` it will run all tests in all subprojects.
 
 ## LICENSE
 

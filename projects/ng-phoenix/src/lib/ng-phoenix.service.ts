@@ -33,11 +33,11 @@ export class NgPhoenixService implements INgPhoenixService {
   }
 
   public connect() {
-    if (this._socket == null || this._socket.isConnected()) {
-      throw new NgPhoenixError('socket-error', 'Socket is null or already connected', { 
-        isSocketNull: this._socket == null, 
-        isConnected: this._socket != null && this._socket.isConnected() || false
-      });
+    if (this._socket == null) {
+      throw new NgPhoenixError('socket-error', 'socket is null');
+    }
+    if (this._socket.isConnected()) {
+      throw new NgPhoenixError('socket-error', 'already connected');
     }
     this._socket.connect();
   }
@@ -97,6 +97,8 @@ export class NgPhoenixService implements INgPhoenixService {
    * PRIVATE
    */
   private _setupSocket = (socket: Socket) => {
+    if (socket == null) { return; }
+
     socket.onOpen(() => { this.subject.next({ type: NgPhoenixEventType.SocketUp });});
     socket.onError(() => { this.subject.next({ type: NgPhoenixEventType.SocketError });});
     socket.onClose(() => { this.subject.next({ type: NgPhoenixEventType.SocketDown });});

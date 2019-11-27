@@ -1,5 +1,6 @@
 export class NgPhoenixError extends Error {
     constructor(type: string, msg: string, data?: object) {
-        super(`${msg}\n${JSON.stringify(data)}`);
+        const finalMsg = `${msg}` + (!!data ? `\n${JSON.stringify(data)}` : "");
+        super(finalMsg);
     }
 }
