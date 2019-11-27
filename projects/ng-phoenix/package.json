@@ -1,11 +1,11 @@
 {
   "name": "@caspeco/ng-phoenix",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
-    "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/my-lib/",
-    "copy:files": "cp --parents -p schematics/*/files/** ../../dist/my-lib/",
-    "copy:collection": "cp schematics/collection.json ../../dist/my-lib/schematics/collection.json",
+    "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/ng-phoenix/",
+    "copy:files": "cp --parents -p schematics/*/files/** ../../dist/ng-phoenix/",
+    "copy:collection": "cp schematics/collection.json ../../dist/ng-phoenix/schematics/collection.json",
     "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
   },
   "schematics": "./schematics/collection.json",
