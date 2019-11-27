@@ -4,7 +4,7 @@ This will be a collection of OpenSource components for various Angular.io relate
 
 ## [NgPhoenix](projects/ng-phoenix/README.md)
 
-An angular service meant to wrap the JavaScript [phoenix client](https://github.com/phoenixframework/phoenix/blob/master/assets/js/phoenix.js) while adding an [rxjs](https://github.com/ReactiveX/rxjs) ReplaySubject to it.
+An angular service meant to wrap the JavaScript [phoenix client](https://github.com/phoenixframework/phoenix/blob/master/assets/js/phoenix.js) while adding an [rxjs](https://github.com/ReactiveX/rxjs) Subject to it.
 
 ## Development server
 

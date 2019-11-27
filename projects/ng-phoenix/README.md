@@ -1,6 +1,6 @@
 # NgPhoenix
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+An angular service meant to wrap the JavaScript [phoenix client](https://github.com/phoenixframework/phoenix/blob/master/assets/js/phoenix.js) while adding an [rxjs](https://github.com/ReactiveX/rxjs) Subject to it.
 
 ## Code scaffolding
 
