@@ -7,6 +7,13 @@ An angular service meant to wrap the JavaScript [phoenix client](https://github.
 Run `ng generate component component-name --project ng-phoenix` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ng-phoenix`.
 > Note: Don't forget to add `--project ng-phoenix` or else it will be added to the default project in your `angular.json` file. 
 
+## TODO
+
+- [ ] Add a basic example
+- [ ] Add a Presence example
+- [ ] Add a generation schematic for a consumer service
+- [ ] More tests
+
 ## Build
 
 Run `ng build ng-phoenix` to build the project. The build artifacts will be stored in the `dist/` directory.
