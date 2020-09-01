@@ -37,6 +37,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ng-phoenix"
+    }
+  },
+  "defaultProject": "ng-phoenix",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

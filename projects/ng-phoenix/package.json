@@ -1,6 +1,6 @@
 {
   "name": "@caspeco/ng-phoenix",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "scripts": {
     "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
     "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/ng-phoenix/",
