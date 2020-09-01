@@ -1,18 +1,7 @@
 {
   "name": "@caspeco/ng-phoenix",
   "version": "0.1.3",
-  "scripts": {
-    "build": "../../node_modules/.bin/tsc -p tsconfig.schematics.json",
-    "copy:schemas": "cp --parents schematics/*/schema.json ../../dist/ng-phoenix/",
-    "copy:files": "cp --parents -p schematics/*/files/** ../../dist/ng-phoenix/",
-    "copy:collection": "cp schematics/collection.json ../../dist/ng-phoenix/schematics/collection.json",
-    "postbuild": "npm run copy:schemas && npm run copy:files && npm run copy:collection"
-  },
-  "schematics": "./schematics/collection.json",
   "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "license": "MIT",
   "author": {
     "name": "Simon Bergström",
@@ -33,12 +22,11 @@
     "url": "https://github.com/caspeco/angular-libs.git"
   },
   "peerDependencies": {
-    "@angular/core": "^8.2.14",
-    "ng-packagr": "^5.7.1",
-    "phoenix": "^1.4",
-    "rxjs": "~6.4.0"
+    "@angular/core": "^10.0.10",
+    "phoenix": "^1.5",
+    "rxjs": "^6.6"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+     "tslib": "^2.0.0"
   }
 }

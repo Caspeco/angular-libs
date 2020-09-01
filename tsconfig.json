@@ -7,11 +7,7 @@
 {
   "files": [],
   "references": [
-    {
-      "path": "./projects/ng-phoenix/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/ng-phoenix/tsconfig.spec.json"
-    }
+    { "path": "./projects/ng-phoenix/tsconfig.lib.json" },
+    { "path": "./projects/ng-phoenix/tsconfig.spec.json" }
   ]
 }

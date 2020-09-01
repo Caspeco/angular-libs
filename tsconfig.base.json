@@ -1,15 +1,19 @@
 {
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
     "module": "es2020",
     "moduleResolution": "node",
-    "importHelpers": true,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
@@ -20,15 +24,9 @@
     ],
     "paths": {
       "ng-phoenix": [
+        "dist/ng-phoenix/caspeco-ng-phoenix",
         "dist/ng-phoenix"
-      ],
-      "ng-phoenix/*": [
-        "dist/ng-phoenix/*"
       ]
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
 }
