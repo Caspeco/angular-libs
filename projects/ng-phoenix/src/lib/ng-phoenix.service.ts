@@ -21,9 +21,7 @@ export class NgPhoenixService implements INgPhoenixService {
   private _socket: Socket = null;
   private _channels: Map<string, Channel> = new Map();
 
-  constructor() {
-    console.log(`This is a local change`);
-  }
+  constructor() { }
 
   public isConnected(): boolean {
     return this._socket != null && this._socket.isConnected();
