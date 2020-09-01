@@ -37,5 +37,8 @@
     "ng-packagr": "^5.7.1",
     "phoenix": "^1.4",
     "rxjs": "~6.4.0"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
   }
 }
