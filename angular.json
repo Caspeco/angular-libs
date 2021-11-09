@@ -28,18 +28,6 @@
             "tsConfig": "projects/ng-phoenix/tsconfig.spec.json",
             "karmaConfig": "projects/ng-phoenix/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-phoenix/tsconfig.lib.json",
-              "projects/ng-phoenix/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }
