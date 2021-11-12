@@ -17,7 +17,7 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "dot-prop": "^4.2.1",
-    "elliptic": "^6.5.3",
+    "elliptic": "^6.5.4",
     "lodash": "^4.17.19",
     "npm-registry-fetch": "^4.0.5",
     "phoenix": "^1.5",
